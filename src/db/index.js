@@ -46,7 +46,15 @@ async function updateUsuario(id, data) {
   client.release();
 }
 
-export { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario, updateUsuario };
+async function autenticarUsuario(email, senha) {
+  const client = await connect();
+  const query = "SELECT * FROM usuario WHERE email = $1 AND senha = $2";
+  const usuario = [email, senha];
+  const res = await client.query(query, usuario);
+  return res.rows[0];
+}
+
+export { autenticarUsuario, selectUsuarios, selectUsuario, insertUsuario, deleteUsuario, updateUsuario };
 
 
 
