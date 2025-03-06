@@ -1,4 +1,5 @@
 import { Router } from "express";
+import verificarAutenticacao from "../middlewares/autenticacao.js";
 
 import {
   selectUsuario,
@@ -10,7 +11,7 @@ import {
 
 const router = Router();
 
-router.get("/usuario", async (req, res) => {
+router.get("/usuario", verificarAutenticacao, async (req, res) => {
   try {
     const usuarios = await selectUsuarios();
     res.json(usuarios);

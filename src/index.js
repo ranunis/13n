@@ -9,6 +9,8 @@ const app = express(); // Instancia o Express
 const port = 3000; // Define a porta
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(roteadorUsuario);
 app.use(roteadorLogin);
 
