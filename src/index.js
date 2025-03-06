@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import roteadorUsuario from "./routes/usuario.js";
 import roteadorLogin from "./routes/login.js";
-
+import cors from "cors";
 dotenv.config();
 
 const app = express(); // Instancia o Express
@@ -13,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(roteadorUsuario);
 app.use(roteadorLogin);
+app.use(cors());
 
 app.get("/", (req, res) => {
   console.log("Rota / solicitada");
