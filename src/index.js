@@ -8,12 +8,13 @@ dotenv.config();
 const app = express(); // Instancia o Express
 const port = 3000; // Define a porta
 
+app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(roteadorUsuario);
 app.use(roteadorLogin);
-app.use(cors());
 
 app.get("/", (req, res) => {
   console.log("Rota / solicitada");
